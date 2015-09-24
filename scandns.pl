@@ -103,7 +103,7 @@ sub checkdns {
 
 sub no_ptr {
   my ($ip_address)=@_;
-  print "ERROR: $ip_address => no PTR record\n";
+  print "ERROR: $ip_address => no address for PTR $hostname\n";
   
   return;
 }
