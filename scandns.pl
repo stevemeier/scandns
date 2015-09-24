@@ -94,7 +94,7 @@ sub checkdns {
   my @reverse_ip_address = map { inet_ntoa($_) } @reverse_packed_ip_address;
 
   if ( ! grep(/^$ip_address$/, @reverse_ip_address) ) {
-    print("ERROR: $ip_address => $hostname => ".join(", ", @reverse_ip_address)." \n");
+    print STDERR ("ERROR: $ip_address => $hostname => ".join(", ", @reverse_ip_address)." \n");
   }
   else {
     print("OK:    $ip_address => $hostname \n");
@@ -103,14 +103,14 @@ sub checkdns {
 
 sub no_ptr {
   my ($ip_address)=@_;
-  print "ERROR: $ip_address => no address for PTR\n";
+  print STDERR "ERROR: $ip_address => no address for PTR\n";
   
   return;
 }
 
 sub no_a {
   my ($ip_address, $hostname)=@_;
-  print "ERROR: $ip_address => $hostname => no A or CNAME record\n";
+  print STDERR "ERROR: $ip_address => $hostname => no A or CNAME record\n";
   return;
 }
 
